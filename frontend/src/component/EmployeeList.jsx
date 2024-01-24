@@ -54,7 +54,7 @@ const EmployeeList = () => {
                             <td>{employee.phone}</td>
                             <td>{employee.departmentId}</td>
                             <td>{employee.position}</td>
-                            <td>{employee.hire_date}</td>
+                            <td>{new Date(employee.hire_date).toLocaleDateString()}</td>
                             <td>
                                 <Link to={`edit/${employee.id}`} className="button is-small is-info">Edit</Link>
                                 <button onClick={() => deleteEmployee(employee.id)} className="button is-small is-danger">Delete</button>

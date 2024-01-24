@@ -4,15 +4,19 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 const EditDepartment = () => {
     const [name, setName] = useState("");
-    const [description, setDescription] = useState("");        
+    const [description, setDescription] = useState("");    
 
     const navigate = useNavigate();
 
     const {id} =  useParams();
 
     useEffect(() => {
-        getDepartmentById();
+        getDepartmentById();        
     }, []);
+
+    const getDepartments = async () => {
+        const response =  await axios.get('http://localhost:5000/departments');        
+    }
 
     const updateDepartment = async (e) => {
         e.preventDefault();

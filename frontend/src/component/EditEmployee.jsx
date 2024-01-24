@@ -10,12 +10,20 @@ const EditEmployee = () => {
     const [position, setPosition] = useState("");
     const [hire_date, setHire_date] = useState(new Date());
 
+    const [departments, setDepartments] = useState([]);
+
     const navigate = useNavigate();
     const {id} =  useParams();
 
     useEffect(() => {
+        getDepartments();
         getEmployeeById();
     }, []);
+
+    const getDepartments = async () => {
+        const response =  await axios.get('http://localhost:5000/departments');
+        setDepartments(response.data);
+    }
 
     const updateEmployee = async (e) => {
         e.preventDefault();
@@ -35,14 +43,13 @@ const EditEmployee = () => {
     }
 
     const getEmployeeById = async () => {
-        const response = await axios.get(`http://localhost:5000/employees/${id}`);
-        console.log(response);
+        const response = await axios.get(`http://localhost:5000/employees/${id}`);        
         setName(response.data.name);
         setEmail(response.data.email);
         setPhone(response.data.phone);
         setDepartmentId(response.data.departmentId);
         setPosition(response.data.position);
-        setHire_date(new Date(response.data.hire_date));
+        setHire_date(new Date(response.data.hire_date).toLocaleDateString());
     }
 
   return (
@@ -56,7 +63,7 @@ const EditEmployee = () => {
                                className="input" 
                                value={name} 
                                onChange={(e) => setName(e.target.value)} 
-                               placeholder="Name"/>
+                               placeholder="Name" required/>
                     </div>
                 </div>
                 <div className="field">
@@ -66,16 +73,16 @@ const EditEmployee = () => {
                                 className="input" 
                                 value={email} 
                                 onChange={(e) => setEmail(e.target.value)}  
-                                placeholder="Email"/>
+                                placeholder="Email" required/>
                     </div>
                 </div>
                 <div className="field">
                     <label className="label">Phone</label>
                     <div className="control">
-                        <input type="text" className="input" 
+                        <input type="number" className="input" 
                         value={phone} 
                         onChange={(e) => setPhone(e.target.value)} 
-                        placeholder="Phone"/>
+                        placeholder="Phone" required/>
                     </div>
                 </div>
                 <div className="field">
@@ -84,7 +91,9 @@ const EditEmployee = () => {
                         <div className="select is-fullwidth">
                             <select value={departmentId} 
                                     onChange={(e) => setDepartmentId(e.target.value)} >
-                                <option value="1">1</option>
+                                {departments.map((department, index) => (
+                                    <option key={index} value={department.id}>{department.name}</option>
+                                ))}
                             </select>
                         </div>
                     </div>
@@ -103,8 +112,7 @@ const EditEmployee = () => {
                     <div className="control">
                         <input type="date" className="input" 
                         value={hire_date} 
-                        onChange={(e) => setHire_date(e.target.value)} 
-                        placeholder="Hire Date"/>
+                        onChange={(e) => setHire_date(e.target.value)} required/>
                     </div>
                 </div>
                 <div className="field">                    
