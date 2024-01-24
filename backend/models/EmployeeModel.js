@@ -7,7 +7,13 @@ const Employee = db.define('employee', {
     name: DataTypes.STRING,
     email: DataTypes.STRING,
     phone: DataTypes.STRING,
-    department: DataTypes.STRING,
+    departmentId: {
+        type: Sequelize.INTEGER,
+        references: {
+            model: 'department',
+            key: 'id'
+        }
+    },
     position: DataTypes.STRING,
     hire_date: DataTypes.DATE
 },{
