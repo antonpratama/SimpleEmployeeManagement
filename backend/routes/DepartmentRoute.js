@@ -6,12 +6,12 @@ import {getDepartments,
         deleteDepartment
 } from "../controller/DepartmentController.js";
 
-const router = express.Router();
+const DepartmentRoute = express.Router();
 
-router.get('/depatments', getDepartments);
-router.get('/depatments/:id', getDepartmentById);
-router.post('/depatments', createDepartment);
-router.patch('/depatments/:id', updateDepartment);
-router.delete('/depatments/:id', deleteDepartment);
+DepartmentRoute.get('/depatments', getDepartments);
+DepartmentRoute.get('/depatments/:id', getDepartmentById);
+DepartmentRoute.post('/depatments', createDepartment);
+DepartmentRoute.patch('/depatments/:id', updateDepartment);
+DepartmentRoute.delete('/depatments/:id', deleteDepartment);
 
-export default router;
+export default DepartmentRoute;

@@ -25,7 +25,7 @@ export const getDepartmentById = async(req, res) => {
 
 export const createDepartment = async(req, res) => {
     try {
-        await Employee.create(req.body)
+        await Department.create(req.body)
         res.status(201).json({msg: "Department Created"});
     } catch (error) {
         console.log(error.message);
