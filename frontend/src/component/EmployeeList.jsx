@@ -1,4 +1,4 @@
-import Reac, {useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import axios from "axios";
 import { Link } from 'react-router-dom';
 
@@ -28,6 +28,9 @@ const EmployeeList = () => {
         <div className="column is-half">
             <Link to={`add`} className="button is-success">
                 Add New Employee
+            </Link>
+            <Link to={`departments`} className="button is-success ml-5">
+                Department List
             </Link>
             <table className="table is-striped is-fullwidth">
                 <thead>

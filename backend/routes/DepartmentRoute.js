@@ -8,10 +8,10 @@ import {getDepartments,
 
 const DepartmentRoute = express.Router();
 
-DepartmentRoute.get('/depatments', getDepartments);
-DepartmentRoute.get('/depatments/:id', getDepartmentById);
-DepartmentRoute.post('/depatments', createDepartment);
-DepartmentRoute.patch('/depatments/:id', updateDepartment);
-DepartmentRoute.delete('/depatments/:id', deleteDepartment);
+DepartmentRoute.get('/departments', getDepartments);
+DepartmentRoute.get('/departments/:id', getDepartmentById);
+DepartmentRoute.post('/departments', createDepartment);
+DepartmentRoute.patch('/departments/:id', updateDepartment);
+DepartmentRoute.delete('/departments/:id', deleteDepartment);
 
 export default DepartmentRoute;
