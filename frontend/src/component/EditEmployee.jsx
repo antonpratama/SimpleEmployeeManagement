@@ -36,7 +36,7 @@ const EditEmployee = () => {
                 position,
                 hire_date
             });
-            navigate("/");
+            navigate("/employees");
         } catch (error) {
             console.log(error)
         }

@@ -28,10 +28,7 @@ const DepartmentList = () => {
         <div className="column is-half">
             <Link to={`add_department`} className="button is-success">
                 Add New Department
-            </Link>
-            <Link to={`/`} className="button is-success ml-5">
-                Employee List
-            </Link>
+            </Link>            
             <table className="table is-striped is-fullwidth">
                 <thead>
                     <tr>
