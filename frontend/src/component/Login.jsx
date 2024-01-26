@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -47,6 +47,9 @@ const Login = () => {
                     </div>
                     <div className="field mt-5">
                         <button className="button is-success is-fullwidth">Login</button>
+                    </div>
+                    <div className="field mt-5">
+                        <Link to={`register`} className="button is-success is-fullwidth">Register</Link>
                     </div>
                 </form>
             </div>
