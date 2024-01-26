@@ -7,10 +7,10 @@ const EmployeeList = () => {
 
     useEffect(() => {
         getEmployees();
-    });
+    },[]);
 
     const getEmployees = async () => {
-        const response =  await axios.get('http://localhost:5000/employees');
+        const response =  await axios.get('http://localhost:5000/employees');        
         setEmployees(response.data);
     }
 
@@ -49,7 +49,7 @@ const EmployeeList = () => {
                             <td>{employee.name}</td>
                             <td>{employee.email}</td>
                             <td>{employee.phone}</td>
-                            <td>{employee.departmentId}</td>
+                            <td>{employee.department.name}</td>
                             <td>{employee.position}</td>
                             <td>{new Date(employee.hire_date).toLocaleDateString()}</td>
                             <td>

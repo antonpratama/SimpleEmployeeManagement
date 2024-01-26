@@ -1,8 +1,13 @@
+import Department from "../models/DepartmentModel.js";
 import Employee from "../models/EmployeeModel.js";
 
 export const getEmployees = async(req, res) => {
-    try {
-        const response = await Employee.findAll();
+    try {        
+        const response = await Employee.findAll({
+            include:[{
+                model: Department
+            }]
+        });
         res.status(200).json(response);
     } catch (error) {
         console.log(error.message);

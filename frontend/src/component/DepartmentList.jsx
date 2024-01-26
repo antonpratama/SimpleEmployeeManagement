@@ -7,7 +7,7 @@ const DepartmentList = () => {
 
     useEffect(() => {
         getDepartments();
-    });
+    },[]);
 
     const getDepartments = async () => {
         const response =  await axios.get('http://localhost:5000/departments');
